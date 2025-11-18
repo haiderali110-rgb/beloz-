@@ -1,0 +1,551 @@
+ $primary-blue: #588CD8;
+ $light-blue: #73C2FB;
+ $dark-blue: #3b82f6;
+ $hover-blue: #5ab0f7;
+ $text-dark: #1f2937;
+ $text-gray: #374151;
+ $text-light: #4b5563;
+ $white: #ffffff;
+ $border-gray: #9ca3af;
+
+ $breakpoint-sm: 640px;
+ $breakpoint-md: 768px;
+ $breakpoint-lg: 1024px;
+
+ $spacing-xs: 0.5rem;
+ $spacing-sm: 0.75rem;
+ $spacing-md: 1rem;
+ $spacing-lg: 1.5rem;
+ $spacing-xl: 2rem;
+ $spacing-2xl: 2.5rem;
+ $spacing-3xl: 4rem;
+ $spacing-4xl: 5rem;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  }
+  @if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  }
+  @if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  }
+}
+
+@mixin card-hover-effect {
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right, $light-blue, $primary-blue);
+    
+     
+    .card-title, .card-description,
+    .feature-title, .feature-description,
+    .industry-title, .industry-description,
+    .trust-title, .trust-description {
+      color: $white;
+    }
+  }
+}
+
+ 
+@mixin image-hover-effect {
+  transition: all 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.video-services-page {
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;  
+  }
+
+  .container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    @include respond-to(sm) { padding: 0 $spacing-xl; }
+    @include respond-to(lg) { padding: 0 $spacing-4xl; }
+  }
+    
+  .hero-section {
+    // background-image: url('/images/vedioe.png');
+    color: $white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: $spacing-3xl;
+    
+    .hero-content {
+      padding: $spacing-3xl $spacing-lg;
+      @include respond-to(sm) { padding: $spacing-3xl 2.5rem; }
+      @include respond-to(lg) { padding: $spacing-3xl 4rem; }
+      
+      max-width: 64rem;
+      
+      .hero-title {
+        font-weight: bold;
+        font-size: 1.875rem;
+        @include respond-to(sm) { font-size: 2.25rem; }
+        @include respond-to(md) { font-size: 3rem; }
+        line-height: 1.2;
+      }
+      
+      .hero-description {
+        margin-top: $spacing-md;
+        font-size: 1rem;
+        @include respond-to(sm) { font-size: 1.125rem; }
+        @include respond-to(md) { font-size: 1.25rem; }
+        max-width: 32rem;
+      }
+    }
+  }
+  
+  .mission-section {
+    padding: $spacing-3xl $spacing-md;
+    @include respond-to(md) { padding: $spacing-3xl $spacing-4xl; }
+    
+    .mission-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      @include respond-to(md) { flex-direction: row; }
+      
+      .mission-card {
+        position: relative;
+        z-index: 10;
+        backdrop-filter: blur(5px);
+        background-color: rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: $spacing-md;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        padding: $spacing-2xl;
+        width: 100%;
+        text-align: center;
+        @include respond-to(md) {
+          width: 50%;
+          text-align: left;
+        }
+        
+        .section-title {
+          font-weight: 600;
+          font-size: 2.25rem;
+          color: $primary-blue;
+          margin-bottom: $spacing-md;
+        }
+        
+        .mission-description {
+          color: $text-dark;
+          line-height: 1.6;
+        }
+      }
+      
+      .mission-image {
+        width: 100%;
+        margin-top: -$spacing-2xl;
+        position: relative;
+        z-index: 0;
+        
+        @include respond-to(md) {
+          width: 50%;
+          margin-left: -8rem;
+          margin-top: 0;
+        }
+        img {
+          margin: 0 auto;
+          @include respond-to(md) { transform: scale(1.25); }
+        }
+      }
+    }
+  }
+   
+  .features-section {
+    padding: $spacing-2xl $spacing-md;
+    @include respond-to(sm) { padding: $spacing-2xl $spacing-xl; }
+    @include respond-to(lg) { padding: $spacing-2xl $spacing-4xl; }
+    
+    .section-header {
+      margin-bottom: $spacing-2xl;
+      text-align: center;
+      @include respond-to(md) { text-align: left; }
+      
+      .section-title {
+        font-weight: bold;
+        font-size: 1.5rem;
+        @include respond-to(md) { font-size: 2.25rem; }
+        margin-bottom: $spacing-md;
+        color: $light-blue;
+      }
+      
+      .section-description {
+        color: $text-gray;
+        font-size: 0.875rem;
+        @include respond-to(md) { font-size: 1rem; }
+      }
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+      @include respond-to(sm) { grid-template-columns: repeat(2, 1fr); }
+      @include respond-to(lg) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: $spacing-xl;
+      }
+      
+      .feature-card {
+        @include card-hover-effect;  
+        background-color: $white;
+        border-radius: 0.75rem;
+        padding: $spacing-lg;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        
+        .feature-icon { 
+          width: 4rem; 
+          height: 4rem;
+          @include image-hover-effect;
+          border-radius: 0.5rem;  
+          padding: 0.5rem;
+        }
+        
+        .feature-title {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: black;
+          margin-bottom: $spacing-md;
+          transition: color 0.3s ease;
+        }
+        
+        .feature-description {
+          color: $text-light;
+          font-size: 0.875rem;
+          transition: color 0.3s ease;
+        }
+      }
+    }
+  }
+  
+  .industries-section {
+    padding: $spacing-2xl $spacing-md;
+    @include respond-to(sm) { padding: $spacing-2xl $spacing-xl; }
+    @include respond-to(lg) { padding: $spacing-2xl $spacing-4xl; }
+    
+    .section-header {
+      margin-bottom: $spacing-2xl;
+      text-align: center;
+      @include respond-to(md) { text-align: left; }
+      
+      .section-title {
+        font-weight: bold;
+        font-size: 1.5rem;
+        @include respond-to(md) { font-size: 2.25rem; }
+        margin-bottom: $spacing-md;
+        color: $light-blue;
+      }
+      
+      .section-description {
+        color: $text-gray;
+        font-size: 0.875rem;
+        @include respond-to(md) { font-size: 1rem; }
+      }
+    }
+    
+    .industries-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+      @include respond-to(sm) { grid-template-columns: repeat(2, 1fr); }
+      @include respond-to(lg) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: $spacing-xl;
+      }
+      
+      .industry-card {
+        @include card-hover-effect;  
+        background-color: $white;
+        border-radius: 0.75rem;
+        padding: $spacing-lg;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        
+        .industry-icon { 
+          width: 4rem; 
+          height: 4rem;
+          @include image-hover-effect;
+          border-radius: 0.5rem; 
+          padding: 0.5rem;
+        }
+        
+        .industry-title {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: black;
+          margin-bottom: $spacing-md;
+          transition: color 0.3s ease;
+        }
+        
+        .industry-description {
+          color: $text-light;
+          font-size: 0.875rem;
+          transition: color 0.3s ease;
+        }
+      }
+    }
+  }
+  
+  // Video Remote Interpreting Section - Updated to match beloz.net
+  .video-remote-interpreting-section {
+    padding: 5rem 1rem;
+    background-color: #f8fafc;
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1e40af;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+      
+      .section-subtitle {
+        font-size: 1.25rem;
+        color: #4b5563;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    }
+    
+    .interpreting-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      
+      @include respond-to(md) {
+        flex-direction: row;
+        align-items: center;
+      }
+      
+      .interpreting-text {
+        flex: 1;
+        
+        .feature-list {
+          list-style: none;
+          padding: 0;
+          margin: 2rem 0;
+          
+          li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            
+            .feature-icon {
+              min-width: 2rem;
+              height: 2rem;
+              margin-right: 1rem;
+              color: $primary-blue;
+            }
+            
+            .feature-text {
+              h4 {
+                font-size: 1.25rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+                color: #1f2937;
+              }
+              
+              p {
+                font-size: 1rem;
+                color: #4b5563;
+                line-height: 1.6;
+              }
+            }
+          }
+        }
+      }
+      
+      .interpreting-image {
+        flex: 1;
+        
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 0.75rem;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+    
+    .cta-container {
+      text-align: center;
+      margin-top: 3rem;
+      
+      .primary-button {
+        font-size: 1.125rem;
+        padding: 0.875rem 2rem;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  .cta-section {
+    .container {
+      max-width: 1170px;
+      margin: 0 auto;
+      padding: 0 $spacing-lg;
+      @include respond-to(md) { padding: 0 $spacing-xl; }
+    }
+    
+    .cta-content {
+      //  background-image: url('/public/images/backgroundImg.png');
+      background-color: $dark-blue;
+      background-blend-mode: multiply;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1170px;
+      margin: 0 auto;
+      padding: $spacing-xl $spacing-lg;
+      border-radius: $spacing-sm;
+      color: $white;
+      gap: $spacing-lg;
+      @include respond-to(md) { flex-direction: row; }
+      
+      .cta-text {
+        text-align: center;
+        @include respond-to(md) { text-align: left; }
+        
+        .cta-title {
+          font-weight: bold;
+          font-size: 1.5rem;
+          @include respond-to(md) { font-size: 2.25rem; }
+          margin-bottom: $spacing-md;
+        }
+        
+        .cta-description {
+          font-size: 0.875rem;
+          @include respond-to(md) { font-size: 1rem; }
+          margin-bottom: $spacing-lg;
+        }
+      }
+      
+      .cta-image {
+        display: flex;
+        justify-content: center;
+        img {
+          height: 12.5rem;
+          @include respond-to(md) { height: 15.625rem; }
+          object-fit: contain;
+        }
+      }
+    }
+  }
+  
+  .trust-section {
+    padding: $spacing-2xl $spacing-md;
+    @include respond-to(sm) { padding: $spacing-2xl $spacing-xl; }
+    @include respond-to(lg) { padding: $spacing-2xl $spacing-4xl; }
+    
+    .section-header {
+      margin-bottom: $spacing-2xl;
+      text-align: center;
+      @include respond-to(md) { text-align: left; }
+      
+      .section-title {
+        font-weight: bold;
+        font-size: 1.5rem;
+        @include respond-to(md) { font-size: 2.25rem; }
+        margin-bottom: $spacing-md;
+        color: $light-blue;
+      }
+      
+      .section-description {
+        color: $text-gray;
+        font-size: 0.875rem;
+        @include respond-to(md) { font-size: 1rem; }
+      }
+    }
+    
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+      @include respond-to(sm) { grid-template-columns: repeat(2, 1fr); }
+      @include respond-to(lg) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: $spacing-xl;
+      }
+      
+      .trust-card {
+        @include card-hover-effect; 
+        background-color: $white;
+        border-radius: 0.75rem;
+        padding: $spacing-lg;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        
+        .trust-icon { 
+          width: 4rem; 
+          height: 4rem;
+          @include image-hover-effect;
+          border-radius: 0.5rem; // Changed from 50% to make it square
+          padding: 0.5rem;
+        }
+        
+        .trust-title {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: black;
+          margin-bottom: $spacing-md;
+          transition: color 0.3s ease;
+        }
+        
+        .trust-description {
+          color: $text-light;
+          font-size: 0.875rem;
+          transition: color 0.3s ease;
+        }
+      }
+    }
+  }
+  
+  .primary-button {
+    background-color: $light-blue;
+    color: $white;
+    border: none;
+    padding: $spacing-sm $spacing-lg;
+  
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    margin-top: $spacing-xl;
+    &:hover { background-color: $hover-blue; }
+  }
+  
+  .secondary-button {
+    background-color: $white;
+    color: $dark-blue;
+    border: none;
+    padding: $spacing-sm $spacing-lg;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    &:hover { background-color: #e5e7eb; }
+  }
+}

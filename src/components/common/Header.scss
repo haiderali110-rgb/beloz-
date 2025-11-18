@@ -1,0 +1,159 @@
+
+
+ 
+.header {
+  background-color: #EEF4FB;
+  
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    
+    @media (min-width: 640px) {
+      padding: 0 1.5rem;
+    }
+    
+    @media (min-width: 1024px) {
+      padding: 0 2rem;
+    }
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+    position: relative;  
+    
+    .logo {
+      img {
+        height: 2rem;
+      }
+    }
+    
+ 
+    .hamburger-btn {
+      display: none;  
+      flex-direction: column;
+      justify-content: space-around;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 10;
+ 
+      @media (max-width: 767px) {
+        display: flex;
+      }
+    }
+
+    .hamburger-line {
+      width: 1.5rem;
+      height: 2px;
+      background-color: black;
+      border-radius: 2px;
+      transition: all 0.3s ease-in-out;
+    }
+ 
+    .hamburger-btn.active .hamburger-line:nth-child(1) {
+      transform: rotate(45deg) translate(2px, 2px);
+    }
+
+    .hamburger-btn.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-btn.active .hamburger-line:nth-child(3) {
+      transform: rotate(-45deg) translate(2px, -2px);
+    }
+    
+    .nav {
+    
+      display: none; 
+      align-items: center;
+      gap: 1.5rem;
+      
+      
+      @media (min-width: 768px) {
+        display: flex;
+      }
+       
+      @media (max-width: 767px) {
+        &.active {
+          display: flex;
+          position: absolute;
+          top: 4rem; 
+          left: 0;
+          width: 100%;
+          background-color: #EEF4FB;
+          flex-direction: column;
+          align-items: flex-start;  
+          padding: 1rem;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          z-index: 5;
+        }
+      }
+      
+      a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        
+        &.active {
+          color: #588CD8;
+        }
+        
+        &:hover {
+          color: #588CD8;
+        }
+      }
+      
+      .select-container {
+        select {
+          background-color: transparent;
+          border: none;
+          padding: 0.5rem;
+          cursor: pointer;
+          
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+    
+    .auth-buttons {
+      display: none;  
+      align-items: center;
+      gap: 0.5rem;
+      
+       
+      @media (min-width: 768px) {
+        display: flex;
+      }
+      
+      .login-btn {
+        background: none;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-weight: 500;
+      }
+      
+      .signup-btn {
+        background-color: #73C2FB;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-weight: 500;
+        
+        &:hover {
+          background-color: #5ab0f7;
+        }
+      }
+    }
+  }
+}
