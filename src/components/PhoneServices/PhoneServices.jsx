@@ -26,7 +26,7 @@ const PhoneServices = () => {
         </section>
         
          
-        <section className="mission-section">
+        <se ction className="mission-section">
           <div className="container">
             <div className="mission-content">
               <div className="mission-card">
@@ -43,11 +43,11 @@ const PhoneServices = () => {
               </div>
             </div>
           </div>
-        </section>
+        </se>
         
       
         <section className="features-section">
-          <div className="container">
+          <div className="container"> 
             <div className="section-header">
               <h1 className="section-title">
                 Elevating Your <br /> Communication

@@ -1,15 +1,15 @@
  
 
 import React from 'react';
-import Header from '../common/Header';
-import Footer from '../common/Footer';
+// import Header from '../common/Header';
+// import Footer from '../common/Footer';
 import './Home.scss';
 
 const Home = () => {
   return (
     <div className="home-page">
       
-        <Header />
+        {/* <Header /> */}
      
       <section className="hero-section">
         <div className="container">
@@ -190,7 +190,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-        <Footer />
+        {/* <Footer /> */}
     </div>
   );
 }

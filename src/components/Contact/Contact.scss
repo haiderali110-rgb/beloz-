@@ -1,0 +1,360 @@
+ 
+ $primary-color: #73C2FB;
+ $secondary-color: #588CD8;
+ $background-light: #EEF4FB;
+ $text-dark: #333;
+ $text-light: #666;
+ $border-color: #ddd;
+ $transition: all 0.3s ease;
+ 
+ $mobile: 480px;
+ $tablet: 768px;
+ $desktop: 1024px;
+ $large: 1200px;
+ 
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: #{$mobile}) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (max-width: #{$tablet}) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (max-width: #{$desktop}) {
+      @content;
+    }
+  } @else if $breakpoint == large {
+    @media (max-width: #{$large}) {
+      @content;
+    }
+  }
+}
+ 
+.main-section {
+  font-family: 'Arial', sans-serif;
+  color: $text-dark;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+.hero {
+  // background: url('images/ContactUs.png') no-repeat center center/cover;
+  color: white;
+  padding: 48px 0;
+  margin-bottom: 56px;
+  
+  .hero-content {
+    max-width: 960px;
+    
+    .hero-title {
+      font-size: 48px;
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      
+      @include respond-to(tablet) {
+        font-size: 36px;
+
+      }
+      
+      @include respond-to(mobile) {
+        font-size: 28px;
+      }
+    }
+    
+    .hero-description {
+      font-size: 18px;
+      max-width: 768px;
+      line-height: 1.5;
+      
+      @include respond-to(mobile) {
+        font-size: 16px;
+      }
+    }
+  }
+}
+ 
+.contact-section {
+  padding: 40px 0;
+  
+  .contact-wrapper {
+    display: flex;
+    gap: 24px;
+    
+    @include respond-to(desktop) {
+      flex-direction: column;
+    }
+  }
+}
+ 
+.contact-form {
+  background-color: $background-light;
+  padding: 24px;
+  border-radius: 12px;
+  flex: 1;
+  
+  @include respond-to(desktop) {
+    max-width: 770px;
+    margin: 0 auto;
+  }
+  
+  .form-header {
+    text-align: center;
+    margin-bottom: 40px;
+    
+    @include respond-to(desktop) {
+      text-align: left;
+    }
+    
+    .form-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: $primary-color;
+      margin-bottom: 16px;
+      
+      @include respond-to(mobile) {
+        font-size: 24px;
+      }
+    }
+    
+    .form-subtitle {
+      font-size: 16px;
+      
+      @include respond-to(mobile) {
+        font-size: 14px;
+      }
+    }
+  }
+  
+  .form {
+    .form-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      
+      @include respond-to(mobile) {
+        flex-direction: column;
+      }
+    }
+    
+    .form-input {
+      flex: 1;
+      height: 50px;
+      padding: 16px;
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      font-size: 16px;
+      
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba(115, 194, 251, 0.2);
+      }
+    }
+    
+    .form-textarea {
+      margin-bottom: 16px;
+      
+      .form-textarea-field {
+        width: 100%;
+        height: 130px;
+        padding: 16px;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        font-size: 16px;
+        resize: vertical;
+        
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 2px rgba(115, 194, 251, 0.2);
+        }
+      }
+    }
+    
+    .form-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      
+      @include respond-to(mobile) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .consent-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        
+        .consent-checkbox {
+          width: 16px;
+          height: 16px;
+        }
+        
+        .consent-label {
+          font-size: 14px;
+        }
+      }
+      
+      .submit-btn {
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: $transition;
+        
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
+        
+        @include respond-to(mobile) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+ 
+.office-hours {
+  background-color: $background-light;
+  padding: 24px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+  
+  @include respond-to(desktop) {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .hours-content {
+    .hours-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: $primary-color;
+      margin-bottom: 16px;
+      
+      @include respond-to(mobile) {
+        font-size: 24px;
+      }
+    }
+    
+    .hours-subtitle {
+      font-size: 16px;
+      margin-bottom: 24px;
+      
+      @include respond-to(mobile) {
+        font-size: 14px;
+      }
+    }
+    
+    .hours-schedule {
+      .hours-item {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+    }
+  }
+  
+  .hours-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    
+    img {
+      max-height: 192px;
+      object-fit: contain;
+    }
+  }
+}
+
+ 
+.get-in-touch {
+  padding: 40px 0;
+  
+  .section-header {
+    margin-bottom: 40px;
+    
+    .section-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: $primary-color;
+      
+      @include respond-to(mobile) {
+        font-size: 24px;
+        
+      }
+    }
+  }
+  
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(2, 1fr);
+       
+    }
+    
+    @include respond-to(mobile) {
+      grid-template-columns: 1fr;
+    }
+    
+    .contact-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: $transition;
+      
+      &:hover {
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(to right, $primary-color, $secondary-color);
+        
+        .card-title, .card-description {
+          color: white;
+        }
+      }
+      
+      .card-icon {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 16px;
+      }
+      
+      .card-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        transition: $transition;
+      }
+      
+      .card-description {
+        color: $text-light;
+        font-size: 14px;
+        transition: $transition;
+      }
+    }
+  }
+}

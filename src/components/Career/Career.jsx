@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '../common/Header';
-import Footer from '../common/Footer';
+// import Header from '../common/Header';
+// import Footer from '../common/Footer';
 import './Career.scss';
 
 const Career = () => {
   return (
     <div className="career-page">
-      <Header />
+      {/* <Header /> */}
       
       <main>
         {/* Hero Section */}
@@ -162,7 +162,7 @@ const Career = () => {
         </section>
       </main>
       
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
