@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import './Header.scss';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout, isLoggedIn } = useAuth();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -51,8 +54,39 @@ const Header = () => {
           </nav>
           
           <div className="auth-buttons">
-            <button className="login-btn">Login</button>
-            <button className="signup-btn">Sign Up</button>
+            {isLoggedIn ? (
+              <>
+                <div className="user-info">
+                  <span className="user-name">
+                    Hi, {user?.firstName || user?.name || 'User'}
+                  </span>
+                </div>
+                <button 
+                  className="logout-btn"
+                  onClick={async () => {
+                    await logout();
+                    navigate('/');
+                  }}
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <button 
+                  className="login-btn"
+                  onClick={() => navigate('/login')}
+                >
+                  Login
+                </button>
+                <button 
+                  className="signup-btn"
+                  onClick={() => navigate('/signup')}
+                >
+                  Sign Up
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
