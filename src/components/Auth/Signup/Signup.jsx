@@ -226,7 +226,7 @@ const Signup = () => {
                 id="agreeTerms"
                 checked={agreeTerms}
                 onChange={(e) => setAgreeTerms(e.target.checked)}
-                disabled={loading}
+                dis  abled={loading}
               />
               <label htmlFor="agreeTerms">
                 I agree to the{' '}

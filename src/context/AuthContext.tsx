@@ -1,47 +1,50 @@
- import React, {createContext,useContext,useState} from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 import { signupAPI, loginAPI } from "../services/authService";
 
 const AuthContext = createContext<any>(null);
 
-export const AuthProvider = ({children}:any)=>{
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [user, setUser] = useState(null);
 
-const [user,setUser] = useState(null);
+  const signup = async (data: any) => {
+    try {
+      const res = await signupAPI(data);
+      // Backend response structure ke mutabiq check:
+      const token = res.data?.token || res.token;
+      const userData = res.data?.user || res.user || res.data;
 
-const signup = async(data:any)=>{
- try{
-   const res = await signupAPI(data);
+      if (token) {
+        localStorage.setItem("token", token);
+        setUser(userData);
+      }
+      return res;
+    } catch (err: any) {
+      throw new Error(err.message || "Signup failed");
+    }
+  };
 
-   if(res.data.token){
-     localStorage.setItem("token",res.data.token);
-     setUser(res.data.user);
-   }
+  const login = async (email: string, password: string) => {
+    try {
+      const res = await loginAPI(email, password);
+      // Backend response structure ke mutabiq check:
+      const token = res.data?.token || res.token;
+      const userData = res.data?.user || res.user || res.data;
 
-   return res;
- }catch(err:any){
-   throw new Error(err.response?.data?.message);
- }
+      if (token) {
+        localStorage.setItem("token", token);
+        setUser(userData);
+      }
+      return res;
+    } catch (err: any) {
+      throw new Error(err.message || "Login failed");
+    }
+  };
+
+  return (
+    <AuthContext.Provider value={{ signup, login, user }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
-const login = async(email:string,password:string)=>{
- try{
-   const res = await loginAPI(email,password);
-
-   if(res.data.token){
-     localStorage.setItem("token",res.data.token);
-     setUser(res.data.user);
-   }
-
-   return res;
- }catch(err:any){
-   throw new Error(err.response?.data?.message);
- }
-};
-
-return(
-<AuthContext.Provider value={{signup,login,user}}>
- {children}
-</AuthContext.Provider>
-)
-};
-
-export const useAuth = ()=> useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext);
